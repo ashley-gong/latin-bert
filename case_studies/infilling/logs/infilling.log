@@ -1,7 +1,3 @@
-2020-09-06 02:01:32.773067: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
-Some weights of the model checkpoint at ../../models/latin_bert/ were not used when initializing BertForMaskedLM: ['cls.seq_relationship.weight', 'cls.seq_relationship.bias']
-- This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPretraining model).
-- This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
 PRED	manu fusti -ve si os fregit libero , ccc	->	,	assium	<-	si servo , cl assium poenam subito si iniuriam faxsit , viginti quinque poenae asses sunto .
 	,	0.462
 	;	0.400
@@ -258,7 +254,7 @@ PRED	pompeius qui armenios sub rege tigra -ne ponticos sub rege mithridate cilic
 	maria	0.003
 	aequor	0.002
 PRED	cato praetorius qui bello civili partes pompei secutus mori maluit quam superstes esse rei	->	publicae	publicae	<-	servienti .
-	publicae	0.990
+	publicae	0.991
 	publica	0.003
 	romanae	0.001
 	publicam	0.001
@@ -1068,7 +1064,7 @@ PRED	hoc probauit , cum causa promissi iuris -que iurandi ad eosdem hostes , quo
 	umquam	0.000
 	hoc	0.000
 PRED	et ut quid esset animale corpus ostenderet : sic , inquit ,	->	enim	et	<-	scriptum est : factus est primus homo in animam uiuentem .
-	enim	0.687
+	enim	0.688
 	et	0.084
 	sicut	0.043
 	quemadmodum	0.039
@@ -2422,16 +2418,16 @@ PRED	extenuato igitur sumptu tribus reciniis et tunicula purpurea et decem tibic
 	illud	0.013
 	ille	0.011
 PRED	qua in lege quom esset 'ne -ve aurum addito' ,	->	videte	videtote	<-	quam humane excipiat altera lex praecipit altera lege : 'at cui auro dentes iuncti escunt , ast im cum ub sepeliet uret -ve , se fraude esto.' et simul illud videtote , aliud habitum esse sepelire et urere .
-	videte	0.562
-	vides	0.106
-	apparet	0.077
-	videtis	0.060
-	intellegitur	0.046
-	vide	0.032
-	ostendit	0.015
-	scitis	0.012
-	audite	0.007
-	videmus	0.007
+	videte	0.549
+	vides	0.103
+	apparet	0.078
+	videtis	0.063
+	intellegitur	0.039
+	vide	0.033
+	ostendit	0.017
+	scitis	0.015
+	audite	0.008
+	videmus	0.008
 PRED	reliqua sunt in more : funus ut indicatur si quid ludorum , dominus -que funeris utatur accenso atque lictoribus , [ 62 ] honoratorum virorum laudes in contio -ne memorentur , eas -que etiam	->	ipse	et	<-	cantus ad tibicinem prosequatur , cui nomen neniae , quo vocabulo etiam apud graecos cantus lugubres nominantur .
 	ipse	0.211
 	popularis	0.053
@@ -3721,7 +3717,7 @@ PRED	sed ut omnibus extremitatibus species sua constet et intra clusi modus enun
 	numeris	0.022
 	articulis	0.021
 PRED	debet enim	->	una	minima	<-	quaeque pars agri in potestate esse mensoris et habit [ ur ] a rectorum angulorum ratione sua postulatio -ne constringi .
-	una	0.232
+	una	0.233
 	sua	0.212
 	tertia	0.054
 	quarta	0.042
@@ -4931,7 +4927,7 @@ PRED	comprensi deinde quidam et alii ; ex iis occisi plures , pauci in custodiam
 	alii	0.023
 	tres	0.020
 PRED	utrumque a te factum est ; nam et messene -ne , uno atque eodem iure foederis quo et lacedaemonem in amicitiam nostram acceptam , socius ipse sociam nobis urbem ui atque armis cepisti et cum philippo , hoste nostro , non societatem solum sed , si diis placet , adfinitatem etiam per philocle -ne praefectum eius pepigisti et ,	->	uelut	ut	<-	bellum aduersus nos gerens , mare circa maleum infestum nauibus piraticis fecisti et plures prope ciues romanos quam philippus cepisti atque occidisti , tutior -que macedoniae ora quam promunturium maleae commeatus ad exercitus nostros portantibus nauibus fuit .
-	uelut	0.401
+	uelut	0.402
 	extemplo	0.061
 	ipse	0.049
 	triste	0.034
@@ -5697,16 +5693,16 @@ PRED	haec magna impedimenta res gerentibus sunt : neque enim omnes tam firmi et 
 	et	0.002
 	sed	0.001
 PRED	ad antiochum aperta mandata erant ; ad eumene -ne per speciem captiuorum redimendorum missus legatus erat ;	->	re	re	<-	uera occultiora quaedam agebantur , quae in praesentia inuisum quidem et suspectum romanis eumene -ne falsis grauioribus -que criminibus onerarunt ; proditor enim ac prope hostis habitus , dum inter se duo reges captantes fraude et auaritia certant .
-	re	0.346
-	persea	0.177
-	aduersus	0.079
-	inter	0.069
-	ad	0.025
-	contra	0.023
-	in	0.021
-	praeter	0.013
-	sed	0.013
-	ceterum	0.011
+	re	0.353
+	persea	0.283
+	aduersus	0.067
+	inter	0.048
+	contra	0.019
+	ad	0.018
+	in	0.016
+	secundum	0.013
+	papare	0.012
+	sed	0.009
 PRED	[ 25 ] eumenes neque fauit uictoriae persei , neque bello eam iuuare	->	in	in	<-	animo habuit , non tam quia paternae inter eos inimicitiae erant , quam ipsorum odiis inter se accensae : non ea regum aemulatio , ut aequo animo persea tantas apisci opes tantam -que gloriam , quanta romanis uictis eum manebat , eumenes uisurus fuerit .
 	in	0.987
 	aequo	0.010
@@ -5719,16 +5715,16 @@ PRED	[ 25 ] eumenes neque fauit uictoriae persei , neque bello eam iuuare	->	in	
 	id	0.000
 	ullo	0.000
 PRED	[ 26 ] nec haec tantum persei per auaritiam est dimissa res , cum pecunia soluta aut pacem habere per eumene -ne , quae uel parte regni redimenda esset , aut deceptus protrahere inimicum mercede onustum et hostes merito ei romanos posset facere ; sed et ante genti regis parata societas et tum gallorum effusorum per illyricum ingens oblatum	->	bellum	auxilium	<-	auaritia dimissum est .
-	bellum	0.317
-	odium	0.132
-	pretium	0.054
-	auxilium	0.034
-	gaudium	0.032
-	scelus	0.031
-	malum	0.025
-	praesidium	0.020
-	cum	0.016
-	responsum	0.016
+	bellum	0.392
+	odium	0.103
+	pretium	0.048
+	auxilium	0.038
+	malum	0.026
+	scelus	0.026
+	gaudium	0.024
+	praesidium	0.022
+	cum	0.022
+	responsum	0.018
 PRED	cum ad id nihil responderetur , clondicus , regulus eorum , 'abi , renuntia ergo' inquit 'regi , nisi aurum obsides -que accepissent , nusquam inde gallos longius uestigium moturos.' haec relata regi cum esset , aduocato consilio cum , quid omnes suasuri essent , appareret , ipse pecuniae quam regni melior custos institit de perfidia et feritate gallorum disserere , multorum iam ante cladibus experta : periculosum esse tantam multitudinem in macedoniam accipere ,	->	cum	ne	<-	grauiores eos socios habeant quam hostes romanos .
 	cum	0.275
 	ut	0.214
@@ -6291,8 +6287,8 @@ PRED	ac , ne materies tali sub munere desit , quaerere sub terris aurum furto -q
 	;	0.018
 	inde	0.014
 	atque	0.011
-	est	0.009
 	.	0.009
+	est	0.009
 	hanc	0.007
 	ante	0.007
 PRED	725 tum conferta licet caeli fulgentia templa cernere seminibus	->	certis	minimis	<-	totum -que micare stipatum stellis mundum nec cedere summa 729 floribus aut siccae curvum per litus harenae , sed , quot eant semper nascentes aequore fluctus , quot delapsa cadant foliorum milia silvis , amplius hoc ignes numero volitare per orbem .
@@ -6696,7 +6692,7 @@ PRED	ita miles memorat meretricem esse eam quam ille uxorem esse aiebat , omnia 
 	id	0.026
 	hoc	0.018
 PRED	bacch . senex optime quantum est in terra , sine	->	me	me	<-	hoc exorare abs te , 1170 ut istuc delictum desistas tanto opere ire oppugnatum .
-	me	0.980
+	me	0.981
 	quaeso	0.005
 	modo	0.005
 	iam	0.003
@@ -7095,7 +7091,7 @@ PRED	ubi sumus provecti in altum , fit quod	->	iussi	di	<-	volunt , capiunt prae
 	alii	0.023
 	sibi	0.022
 PRED	primumdum , si falso insimulas philocomasium , hoc perieris ; iterum , si id verum est , tu ei custos additus	->	hoc	eo	<-	perieris .
-	hoc	0.219
+	hoc	0.220
 	,	0.197
 	hic	0.061
 	huc	0.037
@@ -8239,7 +8235,7 @@ PRED	hoc supplex exposco	->	et	et	<-	precor : velocius huc huc adeste cum vestri
 	nunc	0.003
 	:	0.002
 PRED	gratiam , precor , mihi praestetis per virtutem vestram , ut omnibus in rebus , quicquid ex vobis	->	boni	ego	<-	fecero , cui -ve homini dedero , habeatis eventus bonos et effectum celerrimum .
-	boni	0.340
+	boni	0.341
 	mihi	0.160
 	honestum	0.081
 	optimum	0.031
@@ -8794,16 +8790,16 @@ PRED	et quae idem significarent	->	,	scio	<-	solitos ediscere , quo facilius et 
 	nos	0.012
 	saepe	0.012
 PRED	fuit igitur brevitas illa tutissima quae	->	est	est	<-	apud livium in epistula ad filium scripta , legendos demosthene -ne atque ciceronem , tum ita ut quisque esset demostheni et ciceroni simillimus .
-	est	0.497
-	exstat	0.058
-	reperitur	0.054
-	legitur	0.046
-	traditur	0.034
-	erat	0.034
-	fuit	0.028
-	apparet	0.015
-	habetur	0.014
-	invenitur	0.014
+	est	0.459
+	reperitur	0.060
+	exstat	0.059
+	legitur	0.050
+	traditur	0.044
+	erat	0.032
+	fuit	0.026
+	apparet	0.016
+	invenitur	0.016
+	legimus	0.014
 PRED	paucos ( sunt enim eminentissimi ) excerpere in animo est : facile est autem studiosis qui sint his simillimi iudicare , ne quisquam queratur omissos forte aliquos	->	quos	quos	<-	ipse valde probet ; fateor enim pluris legendos esse quam qui nominabuntur .
 	quos	0.963
 	nisi	0.007
@@ -8827,16 +8823,16 @@ PRED	fit etiam ex duobus , quorum necesse est	->	esse	esse	<-	alterum uerum , el
 	efficere	0.002
 	ad	0.002
 PRED	itaque non dubito haec quoque	->	esse	uocare	<-	consequentia , quamuis ex prioribus dent argumentum ad ea quae secuntur , quorum duas quidam species esse uoluerunt , actionis ( ut pro oppio : 'quos educere inuitos in prouinciam non potuit , eos inuitos retinere qui potuit ? ' ) , temporis , in verrem : 'si finem praetoris edicto adferunt kalendae ian. , cur non initium quoque edicti nascatur a kalendis ian. ?' lxxvii .
-	esse	0.847
-	dici	0.050
-	videri	0.011
-	reddi	0.009
+	esse	0.852
+	dici	0.049
+	videri	0.010
+	reddi	0.008
 	fieri	0.008
 	defendi	0.006
 	dicere	0.004
 	fuisse	0.004
-	ostendi	0.003
 	appellari	0.003
+	ostendi	0.003
 PRED	siue illum ira , quo non debebit , inpellet , siue ambitionis calor abducet a tutis , in nullum malum uires a	->	me	me	<-	sumere ipsas patiar nec conmittam , ut possit quandoque dicere : 'ille amando me occidit.' saepe nihil interest inter amicorum munera et hostium uota ; quidquid illi accidere optant , in id horum intempestiua indulgentia inpellit atque instruit .
 	me	0.863
 	te	0.037
@@ -9751,7 +9747,7 @@ PRED	[ 3 ]	->	alio	de	<-	libro plura scribam cum illum retractavero ; nunc parum
 	alio	0.299
 	hoc	0.214
 	de	0.157
-	priore	0.059
+	priore	0.060
 	eodem	0.043
 	illo	0.016
 	primo	0.016
@@ -12192,7 +12188,7 @@ PRED	1.1.17 hercules quoque detractae religionis suae et grauem et manifestam po
 PRED	cuius rei explorandae gratia legati ad delphicum oraculum missi rettulerunt praecipi sortibus ut aquam eius lacus emissam per agros diffunderent : sic enim veios	->	esse	uenturos	<-	in potestatem populi romani .
 	esse	0.215
 	fore	0.197
-	venire	0.141
+	venire	0.142
 	fieri	0.097
 	futuram	0.048
 	venisse	0.037
@@ -12479,7 +12475,7 @@ PRED	quod ut factum animaduertit , 'cogita nunc cum te' inquit 'quam multi luctu
 	aut	0.002
 	nec	0.002
 PRED	7.2.ext.3 bias autem , cum patriam eius priene -ne hostes inuasissent , omnibus , quos modo saeuitia belli incolumes abire passa fuerat , pretiosarum rerum pondere onustis fugientibus interrogatus quid ita nihil ex bonis suis cum se ferret 'ego uero' inquit 'bona	->	omnia	omnia	<-	mea cum me porto' : pectore enim illa gestabat , non humeris , nec oculis uisenda , sed aestimanda animo .
-	omnia	0.448
+	omnia	0.449
 	quoque	0.146
 	ista	0.145
 	haec	0.055
@@ -12756,7 +12752,7 @@ PRED	[ 2 ] ita tribus centris hac descriptio -ne ampliorem habent orchestram gra
 	ante	0.016
 	circum	0.015
 PRED	[ 4 ] sin autem ionicae columnae fient , scapus praeter spiram et capitulum in octo et dimidiam partem dividatur , et ex his una crassitudini columnae detur ;	->	altera	spira	<-	cum plintho dimidia crassitudi -ne constituatur ; capituli ratio ita fiat , uti in libro tertio est demonstratum .
-	altera	0.455
+	altera	0.456
 	corona	0.088
 	capitulum	0.059
 	reliqua	0.047
@@ -12878,7 +12874,7 @@ PRED	cum autem incipit a	->	latere	femoribus	<-	sagittarii , quae pars est attri
 	regione	0.009
 	medio	0.007
 Precision @ 1: 0.331 10: 0.622 50: 0.741, n: 1160
-scripts/predict_word.py:283: RuntimeWarning: invalid value encountered in double_scalars
+/Users/Ashley/latin-bert/case_studies/infilling/scripts/predict_word.py:216: RuntimeWarning: invalid value encountered in scalar divide
   print("%s\t%.3f\t%.3f\t%.3f\t%s" % (i, p1s[i]/ns[i], p10s[i]/ns[i], p50s[i]/ns[i], ns[i]))
 PRED	idem -que athenis quam magnae sunt gnomonis partes quattuor , umbrae sunt tres , ad vii rhodo v , ad xi tarenti ix , ad quinque	->	,	alexandriae	<-	ceteris -que omnibus locis aliae alio modo umbrae gnomonum aequinoctiales a natura rerum inveniuntur disparatae .
 	,	0.485

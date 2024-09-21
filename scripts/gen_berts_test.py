@@ -3,9 +3,12 @@ from cltk.tokenizers.lat.lat import LatinWordTokenizer as WordTokenizer
 from cltk.tokenizers.lat.lat import LatinPunktSentenceTokenizer as SentenceTokenizer
 from tensor2tensor.data_generators import text_encoder
 import numpy as np
+import pandas as pd
 import torch
 from torch import nn
 from transformers import BertModel, BertPreTrainedModel
+from sklearn.metrics.pairwise import cosine_similarity
+
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -232,6 +235,7 @@ class LatinTokenizer():
 
 		return wp_tokens
 
+# [['[CLS]', 'arma', 'virumque', 'cano', '[SEP]'], ['[CLS]', 'arma', 'gravi', 'numero', 'violentaque', 'bella', 'parabam', '[SEP]']]
 def convert_to_toks(sents):
 
 	sent_tokenizer = SentenceTokenizer()
@@ -282,7 +286,8 @@ class BertLatin(nn.Module):
 		out=torch.matmul(transforms,all_layers)
 		return out
 
-# python3 scripts/gen_berts.py --bertPath models/latin_bert/ --tokenizerPath models/subword_tokenizer_latin/latin.subword.encoder
+# python3 scripts/gen_berts_test.py --bertPath models/latin_bert/ --tokenizerPath models/subword_tokenizer_latin/latin.subword.encoder
+# We are getting pairwise cosine similarity between every FIRST LINE of a Catullus poem using BERT embeddings
 if __name__ == "__main__":
 
 	parser = argparse.ArgumentParser()
@@ -296,12 +301,23 @@ if __name__ == "__main__":
 
 	bert=LatinBERT(tokenizerPath=tokenizerPath, bertPath=bertPath)
 
-	sents=["arma virumque cano", "arma gravi numero violentaque bella parabam"]
+  # Virgil Aen. 1.1, Ovid Amores 1.1, Lucan DBC 1.1
+	# sents=["arma virumque cano", "arma gravi numero violentaque bella parabam", "bella per emathios plus quam civilia campos"]
+	sents = []
+
+  # list of sentences with word-level embeddings
+	# [CLS] could be taken as overall sentence embedding, or do mean pooling
+	with open("test_data/output.txt", "r") as f:
+		for line in f:
+			sents.append(line)
 	
 	bert_sents=bert.get_berts(sents)
+	line_bert_sents = [sent[0][1] for sent in bert_sents]
+	poem_numbers = [sent[1][0] for sent in bert_sents]
 
-	for sent in bert_sents:
-		for (token, bert) in sent:
-			print("%s\t%s" % ( token, ' '.join(["%.5f" % x for x in bert])))
-		print()
+	similarity_matrix = cosine_similarity(line_bert_sents)
+	similarity_df = pd.DataFrame(similarity_matrix, index=poem_numbers, columns=poem_numbers)
+
+	similarity_df.to_csv('test_data/cat_line1_similarity.csv', index=True)
+
 
