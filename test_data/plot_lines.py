@@ -16,7 +16,7 @@ def show_graph_with_labels(dataframe):
   edges = list(zip(filtered_sim['Poem1'], filtered_sim['Poem2'], filtered_sim['Similarity']))
   G.add_weighted_edges_from(edges)
 
-  pos = nx.spring_layout(G, k=0.5)  
+  pos = nx.spring_layout(G, weight='weight', k=0.6, scale=1)  
   nx.draw_networkx_nodes(G, pos, node_size=250)
 
   edges = nx.draw_networkx_edges(G, pos, width=0.5)
