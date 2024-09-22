@@ -278,7 +278,7 @@ class BertLatin(nn.Module):
 	def __init__(self, bertPath=None):
 		super(BertLatin, self).__init__()
 
-		self.bert = BertModel.from_pretrained(bertPath)
+		self.bert = BertModel.from_pretrained(bertPath, return_dict=False)
 		self.bert.eval()
 		
 	def forward(self, input_ids, token_type_ids=None, attention_mask=None, transforms=None):
