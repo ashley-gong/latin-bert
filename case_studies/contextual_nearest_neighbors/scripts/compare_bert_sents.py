@@ -6,10 +6,14 @@ from os import listdir
 from os.path import isfile, join
 from joblib import Parallel, delayed
 from tqdm import tqdm
-from sklearn.cluster import KMeans
+from sklearn.cluster import KMeans, AgglomerativeClustering
 from sklearn.decomposition import PCA
+from scipy.cluster.hierarchy import linkage, dendrogram
 import plotly.express as px
+import plotly.figure_factory as ff
 import pandas as pd
+import matplotlib.pyplot as plt
+import collections
 
 
 PINK = '\033[95m'
@@ -142,9 +146,8 @@ def compare(berts, target_bert, outputDir, query, sent):
 
 	out.close()
 
-
-def compare_cluster(berts, target_bert, target_sent, outputDir, query, sent):
-
+# Only taking top 50 sentences
+def comparison_preprocessing(berts, target_bert, outputDir, query, sent):
 	vals=[]
 	outfile="%s/%s_%s" % (outputDir, query, re.sub(" ", "_", sent))
 	out=open(outfile, "w", encoding="utf-8")
@@ -172,17 +175,18 @@ def compare_cluster(berts, target_bert, target_sent, outputDir, query, sent):
 				vals.append((similarity[tid], wind, doc_id, c_matrix[tid]))
 
 	vals=sorted(vals, key=lambda x: x[0])		# all of the values
-	
+	out.close()
+	return vals
+
+
+# K Means
+def compare_cluster_kmeans(berts, target_bert, target_sent, outputDir, query, sent, num_clusters):
+	vals = comparison_preprocessing(berts, target_bert, outputDir, query, sent)
 	embeddings = [tuple[3] for tuple in vals]
 
-	# Set the number of clusters (e.g., 3 clusters)
-	num_clusters = 3
-
-	# Apply K-Means clustering
-	kmeans = KMeans(n_clusters=num_clusters, random_state=42)
+	kmeans = KMeans(n_clusters=num_clusters, random_state=0)
 	kmeans.fit(embeddings)
 
-	# Get cluster labels for each sentence
 	labels = kmeans.labels_
 	pca = PCA(n_components=2)
 	reduced_embeddings = pca.fit_transform(embeddings)
@@ -200,7 +204,6 @@ def compare_cluster(berts, target_bert, target_sent, outputDir, query, sent):
     'Color': ['Closest' if i == target else f'Cluster {labels[i]}' for i in range(len(vals))]
 	})
 
-	# Create a Plotly scatter plot with hover functionality
 	fig = px.scatter(
     df, x='PCA1', y='PCA2', color='Color', size='Size',
     hover_data={
@@ -213,10 +216,67 @@ def compare_cluster(berts, target_bert, target_sent, outputDir, query, sent):
     title=f"Sentence Clusters for Target: {target_sent}"
 	)
 
-	# Show the plot
 	fig.show()
 
-	out.close()
+# Try Agglomerative Hierarchy clustering
+def compare_cluster_agglom(berts, target_bert, target_sent, outputDir, query, sent, num_clusters):
+	vals = comparison_preprocessing(berts, target_bert, outputDir, query, sent)[-50:]
+	embeddings = [tuple[3] for tuple in vals]
+	agglom = AgglomerativeClustering(n_clusters=num_clusters)	# Euclidean distance, Ward linkage
+	agglom.fit(embeddings)
+
+	target = np.argmax([tuple[0] for tuple in vals])
+	labels = agglom.labels_
+	pca = PCA(n_components=2)
+	reduced_embeddings = pca.fit_transform(embeddings)
+
+	target = np.argmax([tuple[0] for tuple in vals])
+
+	df = pd.DataFrame({
+    'PCA1': reduced_embeddings[:, 0],
+    'PCA2': reduced_embeddings[:, 1],
+    'Sentence': [tuple[1] for tuple in vals],
+		'Document': [tuple[2] for tuple in vals],
+    'Cosine Similarity': [tuple[0] for tuple in vals],
+    'Cluster': labels,
+		'Size': [15 if i == target else 3 for i in range(len(vals))],
+    'Color': ['Closest' if i == target else f'Cluster {labels[i]}' for i in range(len(vals))]
+	})
+
+	fig = px.scatter(
+    df, x='PCA1', y='PCA2', color='Color', size='Size',
+    hover_data={
+        'Sentence': True,
+				'Document': True,
+        'Cosine Similarity': ':.2f',  # Show cosine similarity with 2 decimal places
+        'PCA1': False,  # Hide PCA components in hover
+        'PCA2': False   # Hide PCA components in hover
+    },
+    title=f"Agglomerative Hierarchical Sentence Clusters for Target: {target_sent}"
+	)
+
+	# Dendrogram - Plotly dimensions not working but Matplotlib does
+	# Z = linkage(reduced_embeddings, method='ward')
+	# sentence_counts = collections.Counter(sentences)
+	# unique_sentences = []
+	
+	# for sentence in sentences:
+	# 		if sentence_counts[sentence] > 1:
+	# 				idx = sentence_counts[sentence]
+	# 				unique_sentences.append(f"{sentence[:30]} ({idx})")  # Shorten labels and add uniqueness
+	# 				sentence_counts[sentence] -= 1
+	# 		else:
+	# 				unique_sentences.append(sentence[:30])
+
+	# plt.figure(figsize=(10, 7))
+	# dendrogram(Z, labels=unique_sentences, orientation='left')
+	# plt.title(f"Dendrogram of Agglomerative Hierarchical Clustering (PCA-Reduced) for Target: {target_sent}")
+	# plt.xlabel("Distance")
+	# plt.ylabel("Sentences")
+	# plt.show()
+
+	fig.show()
+
 
 if __name__ == "__main__":
 
@@ -273,7 +333,8 @@ if __name__ == "__main__":
 
 			target_bert=target_bert/LA.norm(target_bert)
 			compare(berts, target_bert, outputDir, target_word, sents[0])
-			compare_cluster(berts, target_bert, target_sent, outputDir, target_word, sents[0])
+			compare_cluster_agglom(berts, target_bert, target_sent, outputDir, target_word, sents[0], 3)
+			compare_cluster_kmeans(berts, target_bert, target_sent, outputDir, target_word, sents[0], 3)
 
 		print ("> ",)
 		line = sys.stdin.readline()
